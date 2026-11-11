@@ -223,6 +223,7 @@ const eventHash = createHash("sha256")
   .update(JSON.stringify(event))
   .digest("hex");
 
+
 let googleEventId: string;
 
 if (existingRecord) {
@@ -231,13 +232,13 @@ if (existingRecord) {
     googleEventId = existingRecord.googleEventId;
   } else {
     try {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  const result = await calendar.events.update({
-    calendarId: "primary",
-    eventId: existingRecord.googleEventId,
-    requestBody: event,
-  });
+      const result = await calendar.events.update({
+        calendarId: "primary",
+        eventId: existingRecord.googleEventId,
+        requestBody: event,
+      });
 
       if (!result.data.id) {
         throw new Error("Identifiant Google manquant.");
@@ -245,12 +246,12 @@ if (existingRecord) {
 
       googleEventId = result.data.id;
       updated++;
-
     } catch (error: any) {
       if (error?.code === 404) {
-         await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
         const result = await calendar.events.insert({
-                  calendarId: "primary",
+          calendarId: "primary",
           requestBody: event,
         });
 
@@ -268,11 +269,10 @@ if (existingRecord) {
 } else {
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
-const result = await calendar.events.update({
-  calendarId: "primary",
-  eventId: existingRecord.googleEventId,
-  requestBody: event,
-});
+  const result = await calendar.events.insert({
+    calendarId: "primary",
+    requestBody: event,
+  });
 
   if (!result.data.id) {
     throw new Error("Identifiant Google manquant.");
@@ -281,6 +281,7 @@ const result = await calendar.events.update({
   googleEventId = result.data.id;
   created++;
 }
+
 
         // Mémorisation de l'événement pour éviter les doublons
         const { error: saveError } = await supabase
