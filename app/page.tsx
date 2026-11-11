@@ -207,7 +207,7 @@ export default function Home() {
           </footer>
         </section>
       </div>
-      <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-[#0d120f] px-2 py-3 md:hidden">
+      <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-[#0d120f] px-2 py-3">
   <div className="mx-auto grid max-w-lg grid-cols-4 gap-1">
     {[
       { name: "Accueil", icon: "⌂", route: "/" },
