@@ -84,7 +84,7 @@ export default function Home() {
           </div>
         </aside>
 
-        <section className="min-w-0 flex-1 p-5 sm:p-8 lg:p-10">
+        <section className="min-w-0 flex-1 p-5 pb-24 sm:p-8 sm:pb-24 lg:p-10">
           <header className="mb-9 flex flex-wrap items-center justify-between gap-4">
             <div>
               <div className="text-sm text-gray-500">DIMANCHE 1 NOVEMBRE 2026</div>
@@ -207,6 +207,25 @@ export default function Home() {
           </footer>
         </section>
       </div>
+      <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-[#0d120f] px-2 py-3 md:hidden">
+  <div className="mx-auto grid max-w-lg grid-cols-4 gap-1">
+    {[
+      { name: "Accueil", icon: "⌂", route: "/" },
+      { name: "Entraînements", icon: "🏃", route: "/entrainements" },
+      { name: "Historique", icon: "◷", route: "/entrainements" },
+      { name: "Performances", icon: "↗", route: "/performances" },
+    ].map((item) => (
+      <button
+        key={item.name}
+        onClick={() => router.push(item.route)}
+        className="flex flex-col items-center gap-1 rounded-lg py-1 text-xs text-gray-300"
+      >
+        <span className="text-xl">{item.icon}</span>
+        <span>{item.name}</span>
+      </button>
+    ))}
+  </div>
+</nav>
     </main>
   );
 }
