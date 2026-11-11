@@ -1,0 +1,918 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Mon Coach Running//Programme 10 km//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Mon Coach Running - Objectif 40 min
+X-WR-TIMEZONE:Europe/Paris
+BEGIN:VEVENT
+UID:semaine-1-mardi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261103T160000Z
+DTEND:20261103T170000Z
+SUMMARY:Running - S1 - Fractionné
+DESCRIPTION:Reprise structurée\n8 × 400 m à 4:05-4:15/km\nRécupération : 1 min 15\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-1-mercredi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261104T160000Z
+DTEND:20261104T170000Z
+SUMMARY:Running - S1 - Endurance
+DESCRIPTION:Reprise structurée\n7 à 8 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-1-jeudi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261105T160000Z
+DTEND:20261105T170000Z
+SUMMARY:Running - S1 - Seuil
+DESCRIPTION:Reprise structurée\n3 × 6 min soutenues\nRécupération : 2 min\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-1-samedi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261107T080000Z
+DTEND:20261107T090000Z
+SUMMARY:Running - S1 - Footing
+DESCRIPTION:Reprise structurée\n7 km faciles + 6 lignes droites\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-1-dimanche@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261108T080000Z
+DTEND:20261108T093000Z
+SUMMARY:Running - S1 - Sortie longue
+DESCRIPTION:Reprise structurée\n12 à 14 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-2-mardi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261110T160000Z
+DTEND:20261110T170000Z
+SUMMARY:Running - S2 - Fractionné
+DESCRIPTION:Développer l'endurance\n5 × 800 m à 4:05-4:12/km\nRécupération : 2 min\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-2-mercredi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261111T160000Z
+DTEND:20261111T170000Z
+SUMMARY:Running - S2 - Endurance
+DESCRIPTION:Développer l'endurance\n8 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-2-jeudi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261112T160000Z
+DTEND:20261112T170000Z
+SUMMARY:Running - S2 - Seuil
+DESCRIPTION:Développer l'endurance\n2 × 10 min soutenues\nRécupération : 3 min\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-2-samedi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261114T080000Z
+DTEND:20261114T090000Z
+SUMMARY:Running - S2 - Footing
+DESCRIPTION:Développer l'endurance\n7 à 8 km faciles + 6 lignes droites\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-2-dimanche@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261115T080000Z
+DTEND:20261115T093000Z
+SUMMARY:Running - S2 - Sortie longue
+DESCRIPTION:Développer l'endurance\n14 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-3-mardi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261117T160000Z
+DTEND:20261117T170000Z
+SUMMARY:Running - S3 - Fractionné
+DESCRIPTION:Renforcer le seuil\n6 × 800 m à 4:00-4:08/km\nRécupération : 2 min\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-3-mercredi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261118T160000Z
+DTEND:20261118T170000Z
+SUMMARY:Running - S3 - Endurance
+DESCRIPTION:Renforcer le seuil\n8 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-3-jeudi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261119T160000Z
+DTEND:20261119T170000Z
+SUMMARY:Running - S3 - Seuil
+DESCRIPTION:Renforcer le seuil\n3 × 8 min soutenues\nRécupération : 2 min 30\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-3-samedi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261121T080000Z
+DTEND:20261121T090000Z
+SUMMARY:Running - S3 - Footing
+DESCRIPTION:Renforcer le seuil\n7 km faciles + 6 lignes droites\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-3-dimanche@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261122T080000Z
+DTEND:20261122T093000Z
+SUMMARY:Running - S3 - Sortie longue
+DESCRIPTION:Renforcer le seuil\n15 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-4-mardi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261124T160000Z
+DTEND:20261124T170000Z
+SUMMARY:Running - S4 - Vitesse
+DESCRIPTION:Assimilation\n10 × 300 m rapides et relâchés\nRécupération : 1 min 15\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-4-mercredi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261125T160000Z
+DTEND:20261125T170000Z
+SUMMARY:Running - S4 - Endurance
+DESCRIPTION:Assimilation\n7 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-4-jeudi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261126T160000Z
+DTEND:20261126T170000Z
+SUMMARY:Running - S4 - Tempo
+DESCRIPTION:Assimilation\n20 min soutenues au milieu d'un footing de 8 km\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-4-samedi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261128T080000Z
+DTEND:20261128T090000Z
+SUMMARY:Running - S4 - Footing
+DESCRIPTION:Assimilation\n6 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-4-dimanche@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261129T080000Z
+DTEND:20261129T093000Z
+SUMMARY:Running - S4 - Sortie longue
+DESCRIPTION:Assimilation\n12 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-5-mardi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261201T160000Z
+DTEND:20261201T170000Z
+SUMMARY:Running - S5 - Fractionné
+DESCRIPTION:Puissance aérobie\n5 × 1000 m à 4:05-4:10/km\nRécupération : 2 min\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-5-mercredi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261202T160000Z
+DTEND:20261202T170000Z
+SUMMARY:Running - S5 - Endurance
+DESCRIPTION:Puissance aérobie\n8 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-5-jeudi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261203T160000Z
+DTEND:20261203T170000Z
+SUMMARY:Running - S5 - Seuil
+DESCRIPTION:Puissance aérobie\n2 × 12 min soutenues\nRécupération : 3 min\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-5-samedi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261205T080000Z
+DTEND:20261205T090000Z
+SUMMARY:Running - S5 - Footing
+DESCRIPTION:Puissance aérobie\n7 à 8 km faciles + 6 lignes droites\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-5-dimanche@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261206T080000Z
+DTEND:20261206T093000Z
+SUMMARY:Running - S5 - Sortie longue
+DESCRIPTION:Puissance aérobie\n15 à 16 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-6-mardi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261208T160000Z
+DTEND:20261208T170000Z
+SUMMARY:Running - S6 - Fractionné
+DESCRIPTION:Développer la vitesse\n6 × 1000 m à 4:00-4:05/km\nRécupération : 2 min\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-6-mercredi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261209T160000Z
+DTEND:20261209T170000Z
+SUMMARY:Running - S6 - Endurance
+DESCRIPTION:Développer la vitesse\n8 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-6-jeudi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261210T160000Z
+DTEND:20261210T170000Z
+SUMMARY:Running - S6 - Seuil
+DESCRIPTION:Développer la vitesse\n3 × 10 min soutenues\nRécupération : 2 min\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-6-samedi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261212T080000Z
+DTEND:20261212T090000Z
+SUMMARY:Running - S6 - Footing
+DESCRIPTION:Développer la vitesse\n7 km faciles + 6 lignes droites\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-6-dimanche@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261213T080000Z
+DTEND:20261213T093000Z
+SUMMARY:Running - S6 - Sortie longue
+DESCRIPTION:Développer la vitesse\n16 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-7-mardi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261215T160000Z
+DTEND:20261215T170000Z
+SUMMARY:Running - S7 - Fractionné
+DESCRIPTION:Consolider la forme\n3 × 1600 m autour de 4:05/km\nRécupération : 2 min 30\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-7-mercredi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261216T160000Z
+DTEND:20261216T170000Z
+SUMMARY:Running - S7 - Endurance
+DESCRIPTION:Consolider la forme\n8 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-7-jeudi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261217T160000Z
+DTEND:20261217T170000Z
+SUMMARY:Running - S7 - Tempo
+DESCRIPTION:Consolider la forme\n25 min soutenues et régulières\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-7-samedi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261219T080000Z
+DTEND:20261219T090000Z
+SUMMARY:Running - S7 - Footing
+DESCRIPTION:Consolider la forme\n7 à 8 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-7-dimanche@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261220T080000Z
+DTEND:20261220T093000Z
+SUMMARY:Running - S7 - Sortie longue
+DESCRIPTION:Consolider la forme\n16 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-8-mardi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261222T160000Z
+DTEND:20261222T170000Z
+SUMMARY:Running - S8 - Fractionné
+DESCRIPTION:Récupération active\n8 × 400 m rapides et maîtrisés\nRécupération : 1 min 15\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-8-mercredi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261223T160000Z
+DTEND:20261223T170000Z
+SUMMARY:Running - S8 - Endurance
+DESCRIPTION:Récupération active\n7 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-8-jeudi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261224T160000Z
+DTEND:20261224T170000Z
+SUMMARY:Running - S8 - Seuil
+DESCRIPTION:Récupération active\n2 × 8 min soutenues\nRécupération : 3 min\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-8-samedi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261226T080000Z
+DTEND:20261226T090000Z
+SUMMARY:Running - S8 - Footing
+DESCRIPTION:Récupération active\n6 à 7 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-8-dimanche@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261227T080000Z
+DTEND:20261227T093000Z
+SUMMARY:Running - S8 - Sortie longue
+DESCRIPTION:Récupération active\n13 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-9-mardi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261229T160000Z
+DTEND:20261229T170000Z
+SUMMARY:Running - S9 - Fractionné
+DESCRIPTION:Spécifique 10 km\n5 × 1000 m à 4:00/km\nRécupération : 2 min\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-9-mercredi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261230T160000Z
+DTEND:20261230T170000Z
+SUMMARY:Running - S9 - Endurance
+DESCRIPTION:Spécifique 10 km\n8 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-9-jeudi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20261231T160000Z
+DTEND:20261231T170000Z
+SUMMARY:Running - S9 - Allure spécifique
+DESCRIPTION:Spécifique 10 km\n3 × 2000 m à 4:08-4:12/km\nRécupération : 3 min\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-9-samedi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270102T080000Z
+DTEND:20270102T090000Z
+SUMMARY:Running - S9 - Footing
+DESCRIPTION:Spécifique 10 km\n7 km faciles + 6 lignes droites\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-9-dimanche@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270103T080000Z
+DTEND:20270103T093000Z
+SUMMARY:Running - S9 - Sortie longue
+DESCRIPTION:Spécifique 10 km\n15 à 16 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-10-mardi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270105T160000Z
+DTEND:20270105T170000Z
+SUMMARY:Running - S10 - Fractionné
+DESCRIPTION:Approcher l'allure cible\n4 × 1200 m à 3:58-4:02/km\nRécupération : 2 min 30\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-10-mercredi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270106T160000Z
+DTEND:20270106T170000Z
+SUMMARY:Running - S10 - Endurance
+DESCRIPTION:Approcher l'allure cible\n8 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-10-jeudi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270107T160000Z
+DTEND:20270107T170000Z
+SUMMARY:Running - S10 - Allure spécifique
+DESCRIPTION:Approcher l'allure cible\n2 × 3000 m à 4:05-4:08/km\nRécupération : 4 min\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-10-samedi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270109T080000Z
+DTEND:20270109T090000Z
+SUMMARY:Running - S10 - Footing
+DESCRIPTION:Approcher l'allure cible\n7 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-10-dimanche@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270110T080000Z
+DTEND:20270110T093000Z
+SUMMARY:Running - S10 - Sortie longue
+DESCRIPTION:Approcher l'allure cible\n15 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-11-mardi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270112T160000Z
+DTEND:20270112T170000Z
+SUMMARY:Running - S11 - Fractionné
+DESCRIPTION:Semaine spécifique clé\n3 × 2000 m à 4:00-4:03/km\nRécupération : 3 min\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-11-mercredi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270113T160000Z
+DTEND:20270113T170000Z
+SUMMARY:Running - S11 - Endurance
+DESCRIPTION:Semaine spécifique clé\n8 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-11-jeudi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270114T160000Z
+DTEND:20270114T170000Z
+SUMMARY:Running - S11 - Allure spécifique
+DESCRIPTION:Semaine spécifique clé\n5 km à 4:08-4:10/km si les sensations sont bonnes\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-11-samedi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270116T080000Z
+DTEND:20270116T090000Z
+SUMMARY:Running - S11 - Footing
+DESCRIPTION:Semaine spécifique clé\n7 km faciles + 5 lignes droites\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-11-dimanche@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270117T080000Z
+DTEND:20270117T093000Z
+SUMMARY:Running - S11 - Sortie longue
+DESCRIPTION:Semaine spécifique clé\n14 à 15 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-12-mardi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270119T160000Z
+DTEND:20270119T170000Z
+SUMMARY:Running - S12 - Fractionné
+DESCRIPTION:Dernier rappel de forme\n6 × 1000 m à 3:58-4:00/km si la forme le permet\nRécupération : 2 min\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-12-mercredi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270120T160000Z
+DTEND:20270120T170000Z
+SUMMARY:Running - S12 - Endurance
+DESCRIPTION:Dernier rappel de forme\n7 à 8 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-12-jeudi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270121T160000Z
+DTEND:20270121T170000Z
+SUMMARY:Running - S12 - Allure spécifique
+DESCRIPTION:Dernier rappel de forme\n3 × 1600 m à 4:00-4:05/km\nRécupération : 3 min\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-12-samedi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270123T080000Z
+DTEND:20270123T090000Z
+SUMMARY:Running - S12 - Footing
+DESCRIPTION:Dernier rappel de forme\n6 à 7 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-12-dimanche@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270124T080000Z
+DTEND:20270124T093000Z
+SUMMARY:Running - S12 - Sortie longue
+DESCRIPTION:Dernier rappel de forme\n12 à 13 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-13-mardi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270126T160000Z
+DTEND:20270126T170000Z
+SUMMARY:Running - S13 - Fractionné
+DESCRIPTION:Début de l'affûtage\n4 × 1000 m à 4:00/km\nRécupération : 2 min 30\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-13-mercredi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270127T160000Z
+DTEND:20270127T170000Z
+SUMMARY:Running - S13 - Endurance
+DESCRIPTION:Début de l'affûtage\n7 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-13-jeudi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270128T160000Z
+DTEND:20270128T170000Z
+SUMMARY:Running - S13 - Tempo
+DESCRIPTION:Début de l'affûtage\n2 × 8 min soutenues\nRécupération : 3 min\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-13-samedi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270130T080000Z
+DTEND:20270130T090000Z
+SUMMARY:Running - S13 - Footing
+DESCRIPTION:Début de l'affûtage\n5 à 6 km faciles + 4 lignes droites\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-13-dimanche@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270131T080000Z
+DTEND:20270131T093000Z
+SUMMARY:Running - S13 - Sortie facile
+DESCRIPTION:Début de l'affûtage\n10 à 11 km faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-14-mardi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270202T160000Z
+DTEND:20270202T170000Z
+SUMMARY:Running - S14 - Activation
+DESCRIPTION:Semaine de course\n35 min faciles + 4 × 1 min à allure 10 km\nRécupération : 1 min facile\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-14-mercredi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270203T160000Z
+DTEND:20270203T170000Z
+SUMMARY:Running - S14 - Endurance
+DESCRIPTION:Semaine de course\n30 à 35 min très faciles\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-14-jeudi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270204T160000Z
+DTEND:20270204T170000Z
+SUMMARY:Running - S14 - Rappel léger
+DESCRIPTION:Semaine de course\n25 min faciles + 4 lignes droites\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-14-samedi@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270206T080000Z
+DTEND:20270206T090000Z
+SUMMARY:Running - S14 - Repos
+DESCRIPTION:Semaine de course\nRepos et récupération\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:semaine-14-dimanche@moncoachrunning
+DTSTAMP:20261103T201441Z
+DTSTART:20270207T080000Z
+DTEND:20270207T093000Z
+SUMMARY:Running - S14 - COMPÉTITION
+DESCRIPTION:Semaine de course\n10 km - objectif 40 minutes\nProgramme : Préparation 10 km - Objectif sub 40
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Rappel entraînement running
+END:VALARM
+END:VEVENT
+END:VCALENDAR

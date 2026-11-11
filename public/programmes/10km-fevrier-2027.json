@@ -1,0 +1,184 @@
+
+{
+  "id": "10km-fevrier-2027",
+  "nom": "Préparation 10 km - Objectif sub 40",
+  "date_course": "2027-02-07",
+  "distance": 10,
+  "objectif_temps": "00:40:00",
+  "allure_cible": "4:00/km",
+  "nombre_semaines": 14,
+  "seances_par_semaine": 5,
+  "validation_coach": true,
+  "adaptation_automatique": false,
+  "statut": "brouillon",
+  "semaines": [
+    {
+      "numero": 1,
+      "dates": "02/11 au 08/11",
+      "objectif": "Reprise structurée",
+      "seances": [
+        {"jour":"Mardi","type":"Fractionné","description":"8 × 400 m à 4:05-4:15/km","recuperation":"1 min 15"},
+        {"jour":"Mercredi","type":"Endurance","description":"7 à 8 km faciles"},
+        {"jour":"Jeudi","type":"Seuil","description":"3 × 6 min soutenues","recuperation":"2 min"},
+        {"jour":"Samedi","type":"Footing","description":"7 km faciles + 6 lignes droites"},
+        {"jour":"Dimanche","type":"Sortie longue","description":"12 à 14 km faciles"}
+      ]
+    },
+    {
+      "numero": 2,
+      "dates": "09/11 au 15/11",
+      "objectif": "Développer l'endurance",
+      "seances": [
+        {"jour":"Mardi","type":"Fractionné","description":"5 × 800 m à 4:05-4:12/km","recuperation":"2 min"},
+        {"jour":"Mercredi","type":"Endurance","description":"8 km faciles"},
+        {"jour":"Jeudi","type":"Seuil","description":"2 × 10 min soutenues","recuperation":"3 min"},
+        {"jour":"Samedi","type":"Footing","description":"7 à 8 km faciles + 6 lignes droites"},
+        {"jour":"Dimanche","type":"Sortie longue","description":"14 km faciles"}
+      ]
+    },
+    {
+      "numero": 3,
+      "dates": "16/11 au 22/11",
+      "objectif": "Renforcer le seuil",
+      "seances": [
+        {"jour":"Mardi","type":"Fractionné","description":"6 × 800 m à 4:00-4:08/km","recuperation":"2 min"},
+        {"jour":"Mercredi","type":"Endurance","description":"8 km faciles"},
+        {"jour":"Jeudi","type":"Seuil","description":"3 × 8 min soutenues","recuperation":"2 min 30"},
+        {"jour":"Samedi","type":"Footing","description":"7 km faciles + 6 lignes droites"},
+        {"jour":"Dimanche","type":"Sortie longue","description":"15 km faciles"}
+      ]
+    },
+    {
+      "numero": 4,
+      "dates": "23/11 au 29/11",
+      "objectif": "Assimilation",
+      "seances": [
+        {"jour":"Mardi","type":"Vitesse","description":"10 × 300 m rapides et relâchés","recuperation":"1 min 15"},
+        {"jour":"Mercredi","type":"Endurance","description":"7 km faciles"},
+        {"jour":"Jeudi","type":"Tempo","description":"20 min soutenues au milieu d'un footing de 8 km"},
+        {"jour":"Samedi","type":"Footing","description":"6 km faciles"},
+        {"jour":"Dimanche","type":"Sortie longue","description":"12 km faciles"}
+      ]
+    },
+    {
+      "numero": 5,
+      "dates": "30/11 au 06/12",
+      "objectif": "Puissance aérobie",
+      "seances": [
+        {"jour":"Mardi","type":"Fractionné","description":"5 × 1000 m à 4:05-4:10/km","recuperation":"2 min"},
+        {"jour":"Mercredi","type":"Endurance","description":"8 km faciles"},
+        {"jour":"Jeudi","type":"Seuil","description":"2 × 12 min soutenues","recuperation":"3 min"},
+        {"jour":"Samedi","type":"Footing","description":"7 à 8 km faciles + 6 lignes droites"},
+        {"jour":"Dimanche","type":"Sortie longue","description":"15 à 16 km faciles"}
+      ]
+    },
+    {
+      "numero": 6,
+      "dates": "07/12 au 13/12",
+      "objectif": "Développer la vitesse",
+      "seances": [
+        {"jour":"Mardi","type":"Fractionné","description":"6 × 1000 m à 4:00-4:05/km","recuperation":"2 min"},
+        {"jour":"Mercredi","type":"Endurance","description":"8 km faciles"},
+        {"jour":"Jeudi","type":"Seuil","description":"3 × 10 min soutenues","recuperation":"2 min"},
+        {"jour":"Samedi","type":"Footing","description":"7 km faciles + 6 lignes droites"},
+        {"jour":"Dimanche","type":"Sortie longue","description":"16 km faciles"}
+      ]
+    },
+    {
+      "numero": 7,
+      "dates": "14/12 au 20/12",
+      "objectif": "Consolider la forme",
+      "seances": [
+        {"jour":"Mardi","type":"Fractionné","description":"3 × 1600 m autour de 4:05/km","recuperation":"2 min 30"},
+        {"jour":"Mercredi","type":"Endurance","description":"8 km faciles"},
+        {"jour":"Jeudi","type":"Tempo","description":"25 min soutenues et régulières"},
+        {"jour":"Samedi","type":"Footing","description":"7 à 8 km faciles"},
+        {"jour":"Dimanche","type":"Sortie longue","description":"16 km faciles"}
+      ]
+    },
+    {
+      "numero": 8,
+      "dates": "21/12 au 27/12",
+      "objectif": "Récupération active",
+      "seances": [
+        {"jour":"Mardi","type":"Fractionné","description":"8 × 400 m rapides et maîtrisés","recuperation":"1 min 15"},
+        {"jour":"Mercredi","type":"Endurance","description":"7 km faciles"},
+        {"jour":"Jeudi","type":"Seuil","description":"2 × 8 min soutenues","recuperation":"3 min"},
+        {"jour":"Samedi","type":"Footing","description":"6 à 7 km faciles"},
+        {"jour":"Dimanche","type":"Sortie longue","description":"13 km faciles"}
+      ]
+    },
+    {
+      "numero": 9,
+      "dates": "28/12 au 03/01",
+      "objectif": "Spécifique 10 km",
+      "seances": [
+        {"jour":"Mardi","type":"Fractionné","description":"5 × 1000 m à 4:00/km","recuperation":"2 min"},
+        {"jour":"Mercredi","type":"Endurance","description":"8 km faciles"},
+        {"jour":"Jeudi","type":"Allure spécifique","description":"3 × 2000 m à 4:08-4:12/km","recuperation":"3 min"},
+        {"jour":"Samedi","type":"Footing","description":"7 km faciles + 6 lignes droites"},
+        {"jour":"Dimanche","type":"Sortie longue","description":"15 à 16 km faciles"}
+      ]
+    },
+    {
+      "numero": 10,
+      "dates": "04/01 au 10/01",
+      "objectif": "Approcher l'allure cible",
+      "seances": [
+        {"jour":"Mardi","type":"Fractionné","description":"4 × 1200 m à 3:58-4:02/km","recuperation":"2 min 30"},
+        {"jour":"Mercredi","type":"Endurance","description":"8 km faciles"},
+        {"jour":"Jeudi","type":"Allure spécifique","description":"2 × 3000 m à 4:05-4:08/km","recuperation":"4 min"},
+        {"jour":"Samedi","type":"Footing","description":"7 km faciles"},
+        {"jour":"Dimanche","type":"Sortie longue","description":"15 km faciles"}
+      ]
+    },
+    {
+      "numero": 11,
+      "dates": "11/01 au 17/01",
+      "objectif": "Semaine spécifique clé",
+      "seances": [
+        {"jour":"Mardi","type":"Fractionné","description":"3 × 2000 m à 4:00-4:03/km","recuperation":"3 min"},
+        {"jour":"Mercredi","type":"Endurance","description":"8 km faciles"},
+        {"jour":"Jeudi","type":"Allure spécifique","description":"5 km à 4:08-4:10/km si les sensations sont bonnes"},
+        {"jour":"Samedi","type":"Footing","description":"7 km faciles + 5 lignes droites"},
+        {"jour":"Dimanche","type":"Sortie longue","description":"14 à 15 km faciles"}
+      ]
+    },
+    {
+      "numero": 12,
+      "dates": "18/01 au 24/01",
+      "objectif": "Dernier rappel de forme",
+      "seances": [
+        {"jour":"Mardi","type":"Fractionné","description":"6 × 1000 m à 3:58-4:00/km si la forme le permet","recuperation":"2 min"},
+        {"jour":"Mercredi","type":"Endurance","description":"7 à 8 km faciles"},
+        {"jour":"Jeudi","type":"Allure spécifique","description":"3 × 1600 m à 4:00-4:05/km","recuperation":"3 min"},
+        {"jour":"Samedi","type":"Footing","description":"6 à 7 km faciles"},
+        {"jour":"Dimanche","type":"Sortie longue","description":"12 à 13 km faciles"}
+      ]
+    },
+    {
+      "numero": 13,
+      "dates": "25/01 au 31/01",
+      "objectif": "Début de l'affûtage",
+      "seances": [
+        {"jour":"Mardi","type":"Fractionné","description":"4 × 1000 m à 4:00/km","recuperation":"2 min 30"},
+        {"jour":"Mercredi","type":"Endurance","description":"7 km faciles"},
+        {"jour":"Jeudi","type":"Tempo","description":"2 × 8 min soutenues","recuperation":"3 min"},
+        {"jour":"Samedi","type":"Footing","description":"5 à 6 km faciles + 4 lignes droites"},
+        {"jour":"Dimanche","type":"Sortie facile","description":"10 à 11 km faciles"}
+      ]
+    },
+    {
+      "numero": 14,
+      "dates": "01/02 au 07/02",
+      "objectif": "Semaine de course",
+      "seances": [
+        {"jour":"Mardi","type":"Activation","description":"35 min faciles + 4 × 1 min à allure 10 km","recuperation":"1 min facile"},
+        {"jour":"Mercredi","type":"Endurance","description":"30 à 35 min très faciles"},
+        {"jour":"Jeudi","type":"Rappel léger","description":"25 min faciles + 4 lignes droites"},
+        {"jour":"Samedi","type":"Repos","description":"Repos et récupération"},
+        {"jour":"Dimanche","type":"COMPÉTITION","description":"10 km - objectif 40 minutes","allure":"4:00/km"}
+      ]
+    }
+  ]
+}
