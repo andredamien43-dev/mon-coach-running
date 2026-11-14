@@ -8,6 +8,7 @@ const items = [
   { name: "Entraînements", icon: "🏃", route: "/entrainements" },
   { name: "Historique", icon: "◷", route: "/entrainements" },
   { name: "Performances", icon: "↗", route: "/performances" },
+  { name: "Objectifs", icon: "🎯", route: "/objectifs" },
 ];
 
 export default function MobileNav() {
@@ -15,7 +16,7 @@ export default function MobileNav() {
 
   return (
     <nav className="fixed inset-x-0 bottom-0 z-[9999] border-t border-white/10 bg-[#0d120f] px-2 pt-3 pb-[env(safe-area-inset-bottom)]">
-      <div className="mx-auto grid max-w-lg grid-cols-4 gap-1">
+      <div className="mx-auto grid max-w-lg grid-cols-5 gap-1">
         {items.map((item) => (
           <Link
             key={item.name}
