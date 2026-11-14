@@ -38,7 +38,7 @@ export default function ConnexionPage() {
 
         if (error) throw error;
 
-        window.location.href = "/entrainements";
+        window.location.href = "/";
       }
     } catch (error) {
       setMessage(

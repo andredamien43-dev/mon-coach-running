@@ -93,13 +93,19 @@ export default function Home() {
               </h1>
               <p className="mt-2 text-sm text-gray-400">Prêt à repousser tes limites ?</p>
             </div>
-            <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-[#121a15] px-4 py-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-lime-400/15 text-lg">🏃</div>
-              <div>
-                <div className="text-sm font-bold">Mon espace</div>
-                <div className="text-xs text-gray-500">Athlète personnel</div>
-              </div>
-            </div>
+<button
+  type="button"
+  onClick={() => router.push("/connexion")}
+  className="flex items-center gap-3 rounded-xl border border-white/10 bg-[#121a15] px-4 py-3 transition hover:border-lime-400/50 hover:bg-lime-400/5"
+>
+  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-lime-400/15 text-lg">
+    🏃
+  </div>
+  <div className="text-left">
+    <div className="text-sm font-bold">Mon espace</div>
+    <div className="text-xs text-gray-500">Connexion / Mon compte</div>
+  </div>
+</button>
           </header>
 
           <div className="mb-8 grid grid-cols-2 gap-3 xl:grid-cols-4">
