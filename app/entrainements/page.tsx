@@ -473,9 +473,27 @@ for (let i = 1; i < validPoints.length; i++) {
 
     if (checkError) throw checkError;
 
-    if (existing) {
-      throw new Error("Cette activité GPX existe déjà.");
-    }
+   if (existing) {
+  const { error: updateError } = await supabase
+    .from("activities")
+    .update({
+      elevation_gain_m: Math.round(elevationGain),
+    })
+    .eq("id", existing.id)
+    .eq("user_id", user.id);
+
+  if (updateError) throw updateError;
+
+  await loadActivities();
+
+  setLastImportDate(new Date().toLocaleString("fr-FR"));
+  setImportMessage(
+    `Dénivelé mis à jour : ${Math.round(elevationGain)} m.`
+  );
+
+  return;
+}
+    
 
     const { error } = await supabase.from("activities").insert({
       user_id: user.id,
