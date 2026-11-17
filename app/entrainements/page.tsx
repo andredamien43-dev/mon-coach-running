@@ -320,6 +320,7 @@ async function importStravaFile(file: File) {
         } finally {
           setImporting(false);
         }
+        
       },
       error: (error) => {
         setImportMessage(error.message);
@@ -333,6 +334,190 @@ async function importStravaFile(file: File) {
     );
     setImporting(false);
   }
+}
+async function importGpxFile(file: File) {
+  setImporting(true);
+  setImportMessage("");
+
+  try {
+    const { data: authData } = await supabase.auth.getUser();
+    const user = authData.user;
+
+    if (!user) {
+      throw new Error("Tu dois être connecté.");
+    }
+
+    const text = await file.text();
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(text, "application/xml");
+
+    if (xml.querySelector("parsererror")) {
+      throw new Error("Le fichier GPX est invalide.");
+    }
+
+    const points = Array.from(xml.getElementsByTagName("trkpt"));
+
+    if (points.length < 2) {
+      throw new Error("Aucun parcours GPS exploitable.");
+    }
+
+  const coordinates = points.map((point) => {
+  const elements = Array.from(point.getElementsByTagName("*"));
+
+  function getMeasurement(names: string[]): number | null {
+    const element = elements.find((el) =>
+      names.includes(
+        (el.localName || el.tagName.split(":").pop() || "").toLowerCase()
+      )
+    );
+
+    if (!element?.textContent) return null;
+
+    const value = Number(element.textContent);
+    return Number.isFinite(value) ? value : null;
+  }
+
+  return {
+    lat: Number(point.getAttribute("lat")),
+    lon: Number(point.getAttribute("lon")),
+    time: point.querySelector("time")?.textContent,
+    elevation: getMeasurement(["ele"]),
+    heartRate: getMeasurement(["hr", "heartrate"]),
+    watts: getMeasurement(["power", "powerinwatts"]),
+  };
+});
+
+    const validPoints = coordinates.filter(
+      (p) => Number.isFinite(p.lat) && Number.isFinite(p.lon)
+    );
+
+    let distanceMeters = 0;
+
+    function distanceBetween(a: typeof validPoints[0], b: typeof validPoints[0]) {
+      const R = 6371000;
+      const rad = (value: number) => value * Math.PI / 180;
+
+      const dLat = rad(b.lat - a.lat);
+      const dLon = rad(b.lon - a.lon);
+
+      const h =
+        Math.sin(dLat / 2) ** 2 +
+        Math.cos(rad(a.lat)) *
+        Math.cos(rad(b.lat)) *
+        Math.sin(dLon / 2) ** 2;
+
+      return 2 * R * Math.asin(Math.sqrt(h));
+    }
+
+    for (let i = 1; i < validPoints.length; i++) {
+      distanceMeters += distanceBetween(
+        validPoints[i - 1],
+        validPoints[i]
+      );
+    }
+
+    const times = validPoints
+      .map((p) => p.time ? new Date(p.time).getTime() : NaN)
+      .filter(Number.isFinite);
+
+    if (distanceMeters <= 0 || times.length < 2) {
+      throw new Error("Distance ou durée introuvable dans le GPX.");
+    }
+
+    const startedAt = new Date(Math.min(...times)).toISOString();
+    const durationSeconds = Math.round(
+      (Math.max(...times) - Math.min(...times)) / 1000
+    );
+const heartRates = validPoints
+  .map((p) => p.heartRate)
+  .filter((v): v is number => v !== null);
+
+const powers = validPoints
+  .map((p) => p.watts)
+  .filter((v): v is number => v !== null);
+
+const averageHr = heartRates.length
+  ? Math.round(heartRates.reduce((sum, value) => sum + value, 0) / heartRates.length)
+  : null;
+
+const maxHr = heartRates.length
+  ? Math.max(...heartRates)
+  : null;
+
+const averageWatts = powers.length
+  ? Math.round(powers.reduce((sum, value) => sum + value, 0) / powers.length)
+  : null;
+
+let elevationGain = 0;
+
+for (let i = 1; i < validPoints.length; i++) {
+  const previous = validPoints[i - 1].elevation;
+  const current = validPoints[i].elevation;
+
+  if (previous !== null && current !== null && current > previous) {
+    elevationGain += current - previous;
+  }
+}
+    const activityName =
+      file.name.replace(/\.gpx$/i, "") || "Course GPX";
+
+    const externalId = `gpx-${file.name}-${startedAt}`;
+
+    const { data: existing, error: checkError } = await supabase
+      .from("activities")
+      .select("id")
+      .eq("user_id", user.id)
+      .eq("source", "gpx")
+      .eq("external_id", externalId)
+      .maybeSingle();
+
+    if (checkError) throw checkError;
+
+    if (existing) {
+      throw new Error("Cette activité GPX existe déjà.");
+    }
+
+    const { error } = await supabase.from("activities").insert({
+      user_id: user.id,
+      source: "gpx",
+      external_id: externalId,
+      name: activityName,
+      sport: "Course à pied",
+      started_at: startedAt,
+         distance_m: Math.round(distanceMeters),
+      moving_time_s: durationSeconds,
+      average_hr: averageHr,
+      max_hr: maxHr,
+      average_watts: averageWatts,
+      elevation_gain_m: Math.round(elevationGain),
+    });
+
+    if (error) throw error;
+
+    await loadActivities();
+
+    setLastImportDate(new Date().toLocaleString("fr-FR"));
+    setImportMessage(
+      `Import réussi : ${(distanceMeters / 1000).toFixed(2)} km.`
+    );
+       } catch (error: any) {
+    console.error("Erreur import GPX détaillée :", error);
+    console.error("Message :", error?.message);
+    console.error("Code :", error?.code);
+    console.error("Détails :", error?.details);
+    console.error("Indice :", error?.hint);
+
+    setImportMessage(
+      error?.message ||
+      error?.details ||
+      error?.hint ||
+      "Erreur inconnue pendant l'import GPX."
+    );
+  } finally {
+    setImporting(false);
+  }
+
+
 }
   async function addActivity(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -457,6 +642,22 @@ async function askCoach() {
   {importing && (
     <p className="mt-2 text-sm">Import en cours...</p>
   )}
+
+<label className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-blue-500 px-4 py-3 font-semibold text-white hover:bg-blue-400">
+  {importing ? "Import GPX en cours..." : "Importer un fichier GPX"}
+
+  <input
+    type="file"
+    accept=".gpx,application/gpx+xml,application/xml,text/xml"
+    disabled={importing}
+    className="hidden"
+    onChange={(e) => {
+      const file = e.target.files?.[0];
+      if (file) importGpxFile(file);
+      e.currentTarget.value = "";
+    }}
+  />
+</label>
 
   {importMessage && (
   <p className="mt-2 text-sm">{importMessage}</p>
