@@ -9,6 +9,8 @@ import { supabase } from "@/lib/supabase";
 type Activity = {
   id: string;
   date: string;
+  startedAt: string;
+  durationSeconds: number;
   name: string;
   type: string;
   distance: number;
@@ -167,9 +169,11 @@ function parseStravaDate(value: string): string | null {
       const distanceKm = item.distance_m / 1000;
 
       return {
-        id: item.id,
-        date: new Date(item.started_at).toLocaleDateString("fr-FR"),
-        name: item.name,
+  id: item.id,
+  date: new Date(item.started_at).toLocaleDateString("fr-FR"),
+  startedAt: item.started_at,
+  durationSeconds: item.moving_time_s,
+  name: item.name,
         type: item.source === "manual"
           ? item.sport
           : getActivityType(item.sport, item.name),
@@ -187,7 +191,7 @@ function parseStravaDate(value: string): string | null {
   useEffect(() => {
     loadActivities();
   }, []);
-
+const [now, setNow] = useState<Date | null>(null);
  const filtered = filter === "Toutes"
   ? activities
   : activities.filter((a) => {
@@ -199,9 +203,41 @@ function parseStravaDate(value: string): string | null {
     });
 
   const totalDistance = activities.reduce(
-    (sum, activity) => sum + activity.distance,
-    0
-  );
+  (sum, activity) => sum + activity.distance,
+  0
+);
+
+const totalDuration = activities.reduce(
+  (sum, activity) => sum + activity.durationSeconds,
+  0
+);
+
+const averagePace = totalDistance > 0
+  ? formatPace(totalDistance, totalDuration)
+  : "--:--";
+
+const sevenDaysAgo = now
+  ? new Date(now.getFullYear(), now.getMonth(), now.getDate() - 6)
+  : null;
+
+const lastSevenDays = now && sevenDaysAgo
+  ? activities.filter((activity) => {
+      const activityDate = new Date(activity.startedAt);
+      return activityDate >= sevenDaysAgo && activityDate <= now;
+    })
+  : [];
+
+const weeklyDistance = lastSevenDays.reduce(
+  (sum, activity) => sum + activity.distance,
+  0
+);
+
+const weeklySessions = lastSevenDays.length;
+
+const weeklyDuration = lastSevenDays.reduce(
+  (sum, activity) => sum + activity.durationSeconds,
+  0
+);
 async function importStravaFile(file: File) {
   setImporting(true);
   setImportMessage("");
@@ -810,29 +846,75 @@ async function askCoach() {
   </div>
 )}
 </section>
-        <div className="mb-7 grid grid-cols-2 gap-3 md:grid-cols-3">
-          <div className="rounded-2xl border border-white/10 bg-[#121a15] p-5">
-            <div className="text-sm text-gray-400">Nombre de séances</div>
-            <div className="mt-2 text-3xl font-black">
-              {activities.length}
-            </div>
-          </div>
+        <div className="mb-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+  <div className="rounded-2xl border border-white/10 bg-[#121a15] p-5">
+    <p className="text-sm text-gray-400">Distance totale</p>
+    <p className="mt-3 text-3xl font-black text-lime-400">
+      {totalDistance.toFixed(1).replace(".", ",")}
+      <span className="ml-1 text-base font-semibold text-gray-400">km</span>
+    </p>
+    <p className="mt-2 text-xs text-gray-500">Toutes activités</p>
+  </div>
 
-          <div className="rounded-2xl border border-white/10 bg-[#121a15] p-5">
-            <div className="text-sm text-gray-400">Distance cumulée</div>
-            <div className="mt-2 text-3xl font-black text-lime-400">
-              {totalDistance.toFixed(1).replace(".", ",")} km
-            </div>
-          </div>
+  <div className="rounded-2xl border border-white/10 bg-[#121a15] p-5">
+    <p className="text-sm text-gray-400">Séances</p>
+    <p className="mt-3 text-3xl font-black">{activities.length}</p>
+    <p className="mt-2 text-xs text-gray-500">Enregistrées</p>
+  </div>
 
-          <div className="col-span-2 rounded-2xl border border-white/10 bg-[#121a15] p-5 md:col-span-1">
-            <div className="text-sm text-gray-400">Source des données</div>
-            <div className="mt-2 text-xl font-black">Strava + manuel</div>
-            <div className="mt-1 text-xs text-gray-500">
-              Synchronisation depuis Supabase
-            </div>
-          </div>
-        </div>
+  <div className="rounded-2xl border border-white/10 bg-[#121a15] p-5">
+    <p className="text-sm text-gray-400">Temps total</p>
+    <p className="mt-3 text-3xl font-black">
+      {Math.floor(totalDuration / 3600)}h
+      {String(Math.floor((totalDuration % 3600) / 60)).padStart(2, "0")}
+    </p>
+    <p className="mt-2 text-xs text-gray-500">Temps en mouvement</p>
+  </div>
+
+  <div className="rounded-2xl border border-white/10 bg-[#121a15] p-5">
+    <p className="text-sm text-gray-400">Allure moyenne</p>
+    <p className="mt-3 text-3xl font-black text-lime-400">
+      {averagePace}
+    </p>
+    <p className="mt-2 text-xs text-gray-500">min/km</p>
+  </div>
+</div>
+
+<div className="mb-8 rounded-2xl border border-lime-400/20 bg-[#121a15] p-5 sm:p-6">
+  <div className="mb-5 flex items-center justify-between gap-3">
+    <div>
+      <p className="text-xs font-bold uppercase tracking-widest text-lime-400">
+        Activité récente
+      </p>
+      <h2 className="mt-1 text-xl font-bold">Les 7 derniers jours</h2>
+    </div>
+    <span className="rounded-full bg-lime-400/10 px-3 py-1 text-xs font-bold text-lime-400">
+      {weeklySessions} séances
+    </span>
+  </div>
+
+  <div className="grid grid-cols-3 gap-3">
+    <div>
+      <p className="text-xs text-gray-400">Distance</p>
+      <p className="mt-2 text-xl font-black">
+        {weeklyDistance.toFixed(1).replace(".", ",")} km
+      </p>
+    </div>
+
+    <div>
+      <p className="text-xs text-gray-400">Durée</p>
+      <p className="mt-2 text-xl font-black">
+        {Math.floor(weeklyDuration / 3600)}h
+        {String(Math.floor((weeklyDuration % 3600) / 60)).padStart(2, "0")}
+      </p>
+    </div>
+
+    <div>
+      <p className="text-xs text-gray-400">Séances</p>
+      <p className="mt-2 text-xl font-black">{weeklySessions}</p>
+    </div>
+  </div>
+</div>
 
         {message && (
           <div className="mb-5 rounded-xl border border-lime-400/20 bg-lime-400/10 p-4 text-sm text-lime-300">
@@ -938,17 +1020,30 @@ async function askCoach() {
           <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
             <h2 className="text-xl font-bold">Historique des séances</h2>
 
-            <select
-              value={filter}
-              onChange={(e) => setFilter(e.target.value)}
-              className="rounded-lg border border-white/10 bg-[#090d0b] px-3 py-2 text-sm text-white"
-            >
-             <option value="Toutes">Toutes les activités</option>
-<option value="Course à pied">Course à pied</option>
-<option value="Vélo">Vélo</option>
-<option value="Natation">Natation</option>
-<option value="Autre">Autre</option>
-            </select>
+       
+<div className="flex flex-wrap gap-2">
+  {[
+    { label: "Toutes", value: "Toutes" },
+    { label: "🏃 Course à pied", value: "Course à pied" },
+    { label: "🚴 Vélo", value: "Vélo" },
+    { label: "🏊 Natation", value: "Natation" },
+    { label: "Autre", value: "Autre" },
+  ].map((item) => (
+    <button
+      key={item.value}
+      type="button"
+      onClick={() => setFilter(item.value)}
+      className={`rounded-xl border px-4 py-2 text-sm font-semibold transition-all ${
+        filter === item.value
+          ? "border-lime-400 bg-lime-400 text-[#090d0b]"
+          : "border-white/10 bg-[#121a15] text-gray-300 hover:border-lime-400/40 hover:text-white"
+      }`}
+    >
+      {item.label}
+    </button>
+  ))}
+</div>
+
           </div>
 
           {loading ? (
@@ -957,43 +1052,72 @@ async function askCoach() {
             </p>
           ) : (
             <div className="space-y-3">
-              {filtered.map((a) => (
-                <div
-                  key={a.id}
-                  className="flex flex-wrap items-center justify-between gap-4 rounded-xl bg-white/[0.03] p-4"
-                >
-                  <div>
-                    <div className="font-bold">{a.name}</div>
-                    <div className="mt-1 text-xs text-gray-500">
-                      {a.date} · {a.type}
-                    </div>
-                  </div>
+     
+{filtered.map((a) => (
+  <div
+    key={a.id}
+    className="group rounded-2xl border border-white/10 bg-[#121a15] p-5 transition-all duration-200 hover:border-lime-400/40 hover:bg-[#17221a]"
+  >
+    <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+      <div className="min-w-0">
+        <div className="flex items-center gap-3">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-lime-400/10 text-xl">
+            {a.type === "Course à pied"
+              ? "🏃"
+              : a.type === "Trail"
+              ? "⛰️"
+              : a.type === "Vélo"
+              ? "🚴"
+              : a.type === "Natation"
+              ? "🏊"
+              : "🏅"}
+          </div>
 
-                  <div className="flex flex-wrap gap-5 text-right">
-                    <div>
-                      <div className="font-bold">
-                        {a.distance.toFixed(2).replace(".", ",")} km
-                      </div>
-                      <div className="text-xs text-gray-500">Distance</div>
-                    </div>
+          <div className="min-w-0">
+            <h3 className="truncate font-bold text-white">
+              {a.name}
+            </h3>
+            <p className="mt-1 text-xs text-gray-400">
+              {a.date} · {a.type}
+            </p>
+          </div>
+        </div>
+      </div>
 
-                    <div>
-                      <div className="font-bold">{a.duration}</div>
-                      <div className="text-xs text-gray-500">Durée</div>
-                    </div>
+      <div className="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-4 sm:gap-6">
+        <div>
+          <p className="text-xs text-gray-500">Distance</p>
+          <p className="mt-1 text-lg font-black text-lime-400">
+            {a.distance.toFixed(2).replace(".", ",")}
+            <span className="ml-1 text-xs font-medium text-gray-400">km</span>
+          </p>
+        </div>
 
-                    <div>
-                      <div className="font-bold text-lime-400">{a.pace}</div>
-                      <div className="text-xs text-gray-500">Allure/km</div>
-                    </div>
+        <div>
+          <p className="text-xs text-gray-500">Durée</p>
+          <p className="mt-1 text-lg font-bold text-white">{a.duration}</p>
+        </div>
 
-                    <div>
-                      <div className="font-bold">{a.heartRate ?? "--"}</div>
-                      <div className="text-xs text-gray-500">FC moy.</div>
-                    </div>
-                  </div>
-                </div>
-              ))}
+        <div>
+          <p className="text-xs text-gray-500">Allure</p>
+          <p className="mt-1 text-lg font-bold text-white">
+            {a.pace}
+            <span className="ml-1 text-xs font-medium text-gray-400">/km</span>
+          </p>
+        </div>
+
+        <div>
+          <p className="text-xs text-gray-500">Fréquence cardiaque</p>
+          <p className="mt-1 text-lg font-bold text-white">
+            {a.heartRate ? `${a.heartRate}` : "--"}
+            <span className="ml-1 text-xs font-medium text-gray-400">bpm</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+))}
+
 
               {filtered.length === 0 && (
                 <p className="py-8 text-center text-gray-500">
