@@ -29,8 +29,34 @@ type Programme = {
   semaines: Semaine[];
 };
 
+type Objectif = {
+  nom: string;
+  type: string;
+  distance_km: number | null;
+  date_objectif: string | null;
+  temps_cible_secondes: number | null;
+};
+
+type ModificationCoach = {
+  jour: string;
+  type: string;
+  description: string;
+  recuperation?: string;
+  allure?: string;
+  raison: string;
+};
+
+
+
+type ReponseCoach = {
+  analyse: string;
+  modifications: ModificationCoach[];
+  question: string;
+};
+
 export default function ProgrammePage() {
   const [programme, setProgramme] = useState<Programme | null>(null);
+  const [objectif, setObjectif] = useState<Objectif | null>(null);
   type StatutSeance = "todo" | "done" | "missed";
 
 const [statuts, setStatuts] = useState<Record<string, StatutSeance>>({});
@@ -38,6 +64,9 @@ const [statuts, setStatuts] = useState<Record<string, StatutSeance>>({});
   const [message, setMessage] = useState("");
   const [chargement, setChargement] = useState(true);
   const [sauvegarde, setSauvegarde] = useState<string | null>(null);
+  const [coachChargement, setCoachChargement] = useState(false);
+const [coachErreur, setCoachErreur] = useState("");
+const [coachResultat, setCoachResultat] = useState<ReponseCoach | null>(null);
 
   useEffect(() => {
     async function charger() {
@@ -51,10 +80,23 @@ const [statuts, setStatuts] = useState<Record<string, StatutSeance>>({});
         const { data: authData, error: authError } =
           await supabase.auth.getUser();
 
-        if (authError || !authData.user) {
-          setMessage("Connecte-toi pour sauvegarder tes séances.");
-          return;
-        }
+   if (authError || !authData.user) {
+  setMessage("Connecte-toi pour sauvegarder tes séances.");
+  return;
+}
+
+const { data: objectifPrincipal, error: objectifError } = await supabase
+  .from("objectifs")
+  .select("nom, type, distance_km, date_objectif, temps_cible_secondes")
+  .eq("user_id", authData.user.id)
+  .eq("objectif_principal", true)
+  .eq("statut", "en_cours")
+  .maybeSingle();
+
+if (objectifError) throw objectifError;
+
+setObjectif(objectifPrincipal);
+        
 
         const { data: sessions, error: sessionsError } = await supabase
   .from("program_sessions")
@@ -127,7 +169,46 @@ async function basculerSeance(id: string, nouveauStatut: StatutSeance) {
     setSauvegarde(null);
   }
 }
+async function analyserAvecCoach() {
+  setCoachChargement(true);
+  setCoachErreur("");
+  setCoachResultat(null);
 
+  try {
+    const response = await fetch("/api/coach", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        message:
+          "Analyse ma progression récente et mon programme. Évalue ma préparation pour mon objectif de 10 km. Analyse mes séances, ma fatigue, mes douleurs et ma forme. Propose des adaptations pertinentes pour les 7 prochains jours si nécessaire.",
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "Erreur lors de l'analyse du coach.");
+    }
+
+    const resultat =
+      typeof data.conseil === "string"
+        ? JSON.parse(data.conseil)
+        : data.conseil;
+
+    setCoachResultat(resultat);
+  } catch (error) {
+    console.error(error);
+    setCoachErreur(
+      error instanceof Error
+        ? error.message
+        : "Impossible de contacter le coach IA."
+    );
+  } finally {
+    setCoachChargement(false);
+  }
+}
 
   if (chargement) {
     return (
@@ -194,18 +275,36 @@ async function basculerSeance(id: string, nouveauStatut: StatutSeance) {
             <div>
               <p className="text-xs text-gray-400">Objectif chronométrique</p>
               <p className="mt-1 text-2xl font-black text-lime-400">
-                {programme.objectif_temps}
+               {objectif?.temps_cible_secondes != null
+  ? `${Math.floor(objectif.temps_cible_secondes / 60)}:${String(objectif.temps_cible_secondes % 60).padStart(2, "0")}`
+  : programme.objectif_temps}
               </p>
             </div>
             <div>
               <p className="text-xs text-gray-400">Allure cible</p>
               <p className="mt-1 text-2xl font-black">
-                {programme.allure_cible}
+                {objectif?.temps_cible_secondes != null && objectif.distance_km
+  ? (() => {
+      const allure = Math.round(
+        objectif.temps_cible_secondes / objectif.distance_km
+      );
+      return `${Math.floor(allure / 60)}:${String(allure % 60).padStart(2, "0")}/km`;
+    })()
+  : programme.allure_cible}
               </p>
             </div>
             <div>
               <p className="text-xs text-gray-400">Date de course</p>
-              <p className="mt-1 text-2xl font-black">7 février 2027</p>
+              <p className="mt-1 text-2xl font-black">
+  {new Date(`${objectif?.date_objectif || programme.date_course}T12:00:00`).toLocaleDateString(
+    "fr-FR",
+    {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    }
+  )}
+</p>
             </div>
           </div>
 
@@ -226,9 +325,95 @@ async function basculerSeance(id: string, nouveauStatut: StatutSeance) {
               {Math.round(progression)} % réalisé
             </p>
           </div>
+        
+        </section>
+
+        {/* COACH IA */}
+        <section className="mb-8 rounded-2xl border border-cyan-400/20 bg-gradient-to-br from-[#142321] to-[#101715] p-5 sm:p-7">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-cyan-400">
+                Assistant intelligent
+              </p>
+              <h2 className="mt-1 text-xl font-black">Mon Coach IA</h2>
+              <p className="mt-2 text-sm text-gray-400">
+                Analyse tes dernières sorties, ta progression et ton état de forme
+                pour préparer les 7 prochains jours.
+              </p>
+            </div>
+
+            <button
+              onClick={analyserAvecCoach}
+              disabled={coachChargement}
+              className="shrink-0 rounded-xl bg-cyan-400 px-5 py-3 text-sm font-black text-black transition hover:bg-cyan-300 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {coachChargement ? "Analyse en cours..." : "Analyser mon entraînement"}
+            </button>
+          </div>
+
+          {coachErreur && (
+            <p className="mt-5 rounded-xl border border-red-400/20 bg-red-400/10 p-3 text-sm text-red-300">
+              {coachErreur}
+            </p>
+          )}
+
+          {coachResultat && (
+            <div className="mt-6 space-y-5 border-t border-white/10 pt-5">
+              <div>
+                <h3 className="font-bold text-cyan-300">Analyse du coach</h3>
+                <p className="mt-2 whitespace-pre-wrap text-sm leading-6 text-gray-200">
+                  {coachResultat.analyse}
+                </p>
+              </div>
+
+              {coachResultat.modifications?.length > 0 && (
+                <div>
+                  <h3 className="font-bold text-cyan-300">
+                    Propositions pour les prochains jours
+                  </h3>
+
+                  <div className="mt-3 space-y-3">
+                    {coachResultat.modifications.map((modification, index) => (
+                      <div
+                        key={`${modification.jour}-${index}`}
+                        className="rounded-xl border border-white/10 bg-black/20 p-4"
+                      >
+                        <p className="font-bold">{modification.jour} — {modification.type}</p>
+                        <p className="mt-2 text-sm text-gray-200">
+                          {modification.description}
+                        </p>
+                        {modification.allure && (
+                          <p className="mt-2 text-xs text-cyan-300">
+                            Allure : {modification.allure}
+                          </p>
+                        )}
+                        {modification.recuperation && (
+                          <p className="mt-1 text-xs text-gray-400">
+                            Récupération : {modification.recuperation}
+                          </p>
+                        )}
+                        <p className="mt-2 text-xs text-gray-400">
+                          Pourquoi : {modification.raison}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <p className="text-sm font-semibold text-cyan-300">
+                {coachResultat.question}
+              </p>
+              <p className="text-xs text-gray-500">
+                Ces propositions ne modifient pas ton planning. Nous ajouterons
+                ensuite la validation avant toute application.
+              </p>
+            </div>
+          )}
         </section>
 
         {message && (
+
           <p className="mb-5 rounded-xl border border-white/10 bg-[#121a15] p-3 text-sm text-amber-300">
             {message}
           </p>

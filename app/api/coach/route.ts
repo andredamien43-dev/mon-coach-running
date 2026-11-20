@@ -32,6 +32,22 @@ if (authError || !authData.user) {
     }
 
     const userId = authData.user.id;
+    const { data: objectifPrincipal, error: objectifError } = await supabase
+  .from("objectifs")
+  .select("nom, type, distance_km, date_objectif, temps_cible_secondes")
+  .eq("user_id", userId)
+  .eq("objectif_principal", true)
+  .eq("statut", "en_cours")
+  .maybeSingle();
+
+if (objectifError) throw objectifError;
+
+if (!objectifPrincipal) {
+  return NextResponse.json(
+    { error: "Aucun objectif principal en cours n'est enregistré." },
+    { status: 400 }
+  );
+}
 
 const { data: activites, error: activitesError } = await supabase
       .from("activities")
@@ -78,30 +94,27 @@ const contenu = await readFile(cheminProgramme, "utf8");
     }
 
 const contexte = {
-      objectif: {
-        distance: "10 km",
-        temps_cible: "40 minutes",
-        allure_cible: "4:00 min/km",
-        date_course: "2027-02-07",
-      },
-      programme,
-      activites: activites || [],
-      suivi_seances: seances || [],
-      bilans_forme: bilanForme || [],
-      message: body.message || "Analyse ma progression.",
-    };
-
-    const ai = new GoogleGenAI({ apiKey });
-
+  objectif: {
+    nom: objectifPrincipal.nom,
+    type: objectifPrincipal.type,
+    distance_km: objectifPrincipal.distance_km,
+    temps_cible_secondes: objectifPrincipal.temps_cible_secondes,
+    date_objectif: objectifPrincipal.date_objectif,
+  },
+  programme,
+  activites: activites || [],
+  suivi_seances: seances || [],
+  bilans_forme: bilanForme || [],
+  message: body.message || "Analyse ma progression.",
+};
+const ai = new GoogleGenAI({ apiKey });
 let response;
 
-for (let tentative = 1; tentative <= 3; tentative++) {
-  try {
-    response = await ai.models.generateContent({
-      model: "gemini-3.8-flash",
+const generation = ai.models.generateContent({
+      model: "gemini-3.5-flash-lite",
       contents: JSON.stringify(contexte),
       config: {
-        maxOutputTokens: 10000,
+        maxOutputTokens: 3000,
         responseMimeType: "application/json",
         temperature: 0.4,
         systemInstruction: `
@@ -171,21 +184,17 @@ Adaptation intelligente du programme :
       },
     });
 
-    break;
-  } catch (error) {
-    const status = (error as { status?: number }).status;
+ 
 
-    if (status !== 503 || tentative === 3) {
-      throw error;
-    }
-
-    console.log(`Gemini surchargé. Nouvelle tentative ${tentative + 1}/3...`);
-
-    await new Promise((resolve) =>
-      setTimeout(resolve, tentative * 3000)
-    );
-  }
-}
+response = await Promise.race([
+  generation,
+  new Promise<never>((_, reject) =>
+    setTimeout(
+      () => reject(new Error("TIMEOUT_GEMINI")),
+      45000
+    )
+  ),
+]);
 
 if (!response) {
 
@@ -207,7 +216,14 @@ return NextResponse.json({
   } catch (error) {
   console.error("Erreur Gemini :", error);
 
-  const status = (error as { status?: number }).status;
+if (error instanceof Error && error.message === "TIMEOUT_GEMINI") {
+  return NextResponse.json(
+    { error: "Le coach IA met trop de temps à répondre. Réessaie dans quelques instants." },
+    { status: 504 }
+  );
+}
+
+const status = (error as { status?: number }).status;
 
   if (status === 503) {
     return NextResponse.json(
