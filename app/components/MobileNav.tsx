@@ -30,7 +30,7 @@ export default function MobileNav() {
         type="button"
         onClick={() => setOpen(true)}
         aria-label="Ouvrir le menu"
-        className="fixed left-4 top-4 z-[10002] flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-[#151d17] text-2xl text-lime-400 shadow-lg md:hidden"
+        className="fixed right-4 top-4 z-[10002] flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-[#151d17] text-2xl text-lime-400 shadow-lg md:hidden"
       >
         ☰
       </button>
